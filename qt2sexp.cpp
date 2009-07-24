@@ -2,8 +2,6 @@
 #include <fstream>
 #include <string>
 
-#include <glob.h>
-
 #include "ast.h"
 #include "control.h"
 #include "parser.h"
