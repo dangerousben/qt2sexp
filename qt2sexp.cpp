@@ -54,7 +54,7 @@ void doClass(ClassModelItem &item)
 {
 	cout << "(" << item->name().toStdString() << " (";
 
-	QListIterator<ClassModelItem> ci(item->classMap().values());
+	QListIterator<ClassModelItem> ci(item->classes());
 	while(ci.hasNext()) {
 		ClassModelItem item = ci.next();
 		doClass(item);
@@ -62,7 +62,7 @@ void doClass(ClassModelItem &item)
 
 	cout << ") (";
 
-	QListIterator<FunctionModelItem> fi(item->functionMap().values());
+	QListIterator<FunctionModelItem> fi(item->functions());
 	while(fi.hasNext()) {
 		FunctionModelItem item = fi.next();
 		doFunction(item);
@@ -75,7 +75,7 @@ void doNamespace(NamespaceModelItem &item)
 {
 	cout << "(" << item->name().toStdString() << " (";
 
-	QListIterator<NamespaceModelItem> ni(item->namespaceMap().values());
+	QListIterator<NamespaceModelItem> ni(item->namespaces());
 	while(ni.hasNext()) {
 		NamespaceModelItem item = ni.next();
 		doNamespace(item);
@@ -83,7 +83,7 @@ void doNamespace(NamespaceModelItem &item)
 
 	cout << ") (";
 
-	QListIterator<ClassModelItem> ci(item->classMap().values());
+	QListIterator<ClassModelItem> ci(item->classes());
 	while(ci.hasNext()) {
 		ClassModelItem item = ci.next();
 		doClass(item);
@@ -96,7 +96,7 @@ void doFile(FileModelItem &item)
 {
 	cout << "(top-level " << "(";
 
-	QListIterator<NamespaceModelItem> ni(item->namespaceMap().values());
+	QListIterator<NamespaceModelItem> ni(item->namespaces());
 	while(ni.hasNext()) {
 		NamespaceModelItem item = ni.next();
 		doNamespace(item);
@@ -104,7 +104,7 @@ void doFile(FileModelItem &item)
 
 	cout << ") (";
 
-	QListIterator<ClassModelItem> ci(item->classMap().values());
+	QListIterator<ClassModelItem> ci(item->classes());
 	while(ci.hasNext()) {
 		ClassModelItem item = ci.next();
 		doClass(item);
